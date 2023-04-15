@@ -1,7 +1,7 @@
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
   description = "Allow ssh inbound traffic"
-  vpc_id      = aws_vpc.terraformVpc.id
+  vpc_id      = module.network.vpc_id
 
   ingress {
     description = "ssh from VPC"
@@ -29,14 +29,14 @@ resource "aws_security_group" "allow_ssh" {
 resource "aws_security_group" "allow_ssh_custom" {
   name        = "allow_ssh_custom"
   description = "Allow ssh and custom inbound traffic"
-  vpc_id      = aws_vpc.terraformVpc.id
+  vpc_id      = module.network.vpc_id
 
   ingress {
     description = "ssh and custom from VPC"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [aws_vpc.terraformVpc.cidr_block]
+    cidr_blocks = [module.network.vpc_cidr]
   }
 
   
@@ -44,7 +44,7 @@ resource "aws_security_group" "allow_ssh_custom" {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    cidr_blocks = [aws_vpc.terraformVpc.cidr_block]
+    cidr_blocks = [module.network.vpc_cidr]
   }
 
   egress {

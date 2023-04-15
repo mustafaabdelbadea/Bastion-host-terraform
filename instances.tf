@@ -3,7 +3,7 @@ resource "aws_instance" "publicInstance1" {
   instance_type = var.INSTANCE_TYPE
 
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
-  subnet_id                   = aws_subnet.publicSubnet1.id
+  subnet_id                   = module.network.pub_subnet1
   associate_public_ip_address = true
   key_name                    = var.KEY_NAME
 
@@ -25,7 +25,7 @@ resource "aws_instance" "publicInstance2" {
   instance_type = var.INSTANCE_TYPE
 
   vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
-  subnet_id                   = aws_subnet.publicSubnet2.id
+  subnet_id                   = module.network.pub_subnet2
   associate_public_ip_address = true
   key_name                    = var.KEY_NAME
 
@@ -48,7 +48,7 @@ resource "aws_instance" "privateInstance1" {
   instance_type = var.INSTANCE_TYPE
   associate_public_ip_address = false
   vpc_security_group_ids      = [aws_security_group.allow_ssh_custom.id]
-  subnet_id                   = aws_subnet.privateSubnet1.id
+  subnet_id                   = module.network.prv_subnet1
   key_name                    = var.KEY_NAME
 
   user_data = <<-EOF
@@ -70,7 +70,7 @@ resource "aws_instance" "privateInstance2" {
   instance_type = var.INSTANCE_TYPE
   associate_public_ip_address = false
   vpc_security_group_ids      = [aws_security_group.allow_ssh_custom.id]
-  subnet_id                   = aws_subnet.privateSubnet1.id
+  subnet_id                   = module.network.prv_subnet2
   key_name                    = var.KEY_NAME
 
   user_data = <<-EOF
