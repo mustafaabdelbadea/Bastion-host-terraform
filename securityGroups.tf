@@ -21,7 +21,7 @@ resource "aws_security_group" "allow_ssh" {
   }
 
   tags = {
-    Name = "terraform"
+    Name = var.TAG
   }
 }
 
@@ -56,6 +56,6 @@ resource "aws_security_group" "allow_ssh_custom" {
   }
 
   tags = {
-    Name = "terraform"
+    Name = var.TAG
   }
 }

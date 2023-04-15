@@ -5,7 +5,7 @@ resource "aws_route_table" "privateRouteTable" {
     nat_gateway_id = aws_nat_gateway.NGW.id
   }
   tags = {
-    Name = "terraform"
+    Name = var.TAG
   }
 }
 

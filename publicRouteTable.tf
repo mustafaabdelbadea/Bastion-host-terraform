@@ -2,7 +2,7 @@ resource "aws_internet_gateway" "terraformIGW" {
   vpc_id = aws_vpc.terraformVpc.id
 
   tags = {
-    Name = "terraform"
+    Name = var.TAG
   }
 }
 
@@ -15,7 +15,7 @@ resource "aws_route_table" "publicTable" {
   }
 
   tags = {
-    Name = "terraform"
+    Name = var.TAG
   }
 }
 

@@ -1,18 +1,3 @@
-variable "region" {
-    default = "us-east-1"
-}
   provider "aws" {
-    region = var.region
+    region = var.REGION
   }
-
-terraform {
-  backend "s3" {
-    bucket = "tf-state-iti"
-    key    = "tf-state-day1"
-    region = "us-east-1"
-    dynamodb_table  = "terraform"
-  }
-  
-}
-
-

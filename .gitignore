@@ -1,2 +1,4 @@
 .terraform*
 TF-key.pem
+*.pem
+public_ips.txt

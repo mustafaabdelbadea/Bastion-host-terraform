@@ -1,5 +1,5 @@
 resource "aws_key_pair" "TF-key" {
-  key_name   = "TF-key"
+  key_name   = var.KEY_NAME
   public_key = tls_private_key.terra-labs.public_key_openssh
 }
 
@@ -10,11 +10,12 @@ resource "tls_private_key" "terra-labs" {
 
 resource "local_file" "pvKey" {
   content  = tls_private_key.terra-labs.private_key_pem
-  filename = "TF-key.pem"
+  filename = var.RSA_FILE_NAME
 }
 
 resource "aws_secretsmanager_secret" "keySecret" {
-  name = "secret_rsa_keys_aws"
+  name = "secret_keys_aws"
+  recovery_window_in_days = 0
 }
 
 resource "aws_secretsmanager_secret_version" "secrets" {
