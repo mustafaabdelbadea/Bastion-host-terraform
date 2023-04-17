@@ -54,13 +54,9 @@ resource "aws_instance" "privateInstance1" {
   user_data = <<-EOF
    #!/bin/bash
    sudo yum update -y
-   sudo yum install httpd -y
-   sudo systemctl enable httpd
-   sudo systemctl start httpd
-   echo "<html><body><div>Private $(hostname -f)</div></body></html>" > /var/www/html/index.html
-         echo '${local.private_key}' > /home/ec2-user/TF-key.pem
-
-
+   sudo yum install -y mariadb-server
+   sudo systemctl enable mariadb
+   sudo systemctl start mariadb
    EOF
 
 }
@@ -76,11 +72,9 @@ resource "aws_instance" "privateInstance2" {
   user_data = <<-EOF
    #!/bin/bash
    sudo yum update -y
-   sudo yum install httpd -y
-   sudo systemctl enable httpd
-   sudo systemctl start httpd
-   echo "<html><body><div>Private $(hostname -f)</div></body></html>" > /var/www/html/index.html
-         echo '${local.private_key}' > /home/ec2-user/TF-key.pem
+   sudo yum install -y mariadb-server
+   sudo systemctl enable mariadb
+   sudo systemctl start mariadb
    EOF
 
 }

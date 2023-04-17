@@ -58,3 +58,59 @@ variable "AMI_ID" {
 variable "INSTANCE_TYPE" {
   type = string
 }
+
+variable "DB_STORAGE" {
+  type = number
+}
+
+variable "DB_NAME" {
+  type = string
+}
+
+variable "DB_ENGINE" {
+  type = string
+}
+
+variable "ENGINE_VERSION" {
+  type = string
+}
+
+variable "DB_INSTANCE_CLASS" {
+  type = string
+}
+
+variable "PARAMETER_G_N_DB" {
+  type = string
+}
+
+variable "DB_CLUSTER" {
+  type = string
+}
+
+variable "DB_CACHE_ENGINE" {
+  type = string
+}
+
+variable "DB_NODE_TYPE" {
+  type = string
+}
+
+variable "NUM_CAHCE_NODES" {
+  type = number
+}
+
+variable "CACHE_PARAMETER_GROUP_NAME" {
+  type = string
+}
+
+variable "ENGINE_VERSION_CACHE" {
+  type = string
+}
+
+variable "CACHE_PORT" {
+  type = number
+}
+
+variable "USER_NAME" {
+  type = string
+}

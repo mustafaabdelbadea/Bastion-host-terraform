@@ -15,7 +15,7 @@ resource "aws_subnet" "publicSubnet1" {
     Name = var.tag
   }
 
-  map_public_ip_on_launch = "true" 
+  map_public_ip_on_launch = "true"
 }
 resource "aws_subnet" "publicSubnet2" {
   vpc_id            = aws_vpc.terraformVpc.id
@@ -48,3 +48,15 @@ resource "aws_subnet" "privateSubnet2" {
   }
 }
 
+resource "aws_db_subnet_group" "rds_subnet" {
+  subnet_ids = [aws_subnet.privateSubnet1.id, aws_subnet.privateSubnet2.id]
+
+  tags = {
+    Name = var.tag
+  }
+}
+
+resource "aws_elasticache_subnet_group" "db_cache_subnet" {
+  name       = "my-cache-subnet"
+  subnet_ids = [aws_subnet.privateSubnet1.id]
+}
