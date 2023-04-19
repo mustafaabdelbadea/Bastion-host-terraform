@@ -16,3 +16,10 @@ from two availability zones
 - Instances in public subnet
 - Instances in private subnet
 - Nat getway
+- AWS Secrets Manager
+- Lambda 
+- S3 bucket
+- Dynamo db
+- RDS
+- Elastic cache Redis
+- SES
