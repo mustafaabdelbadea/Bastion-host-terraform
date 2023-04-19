@@ -1,6 +1,6 @@
 # Bastion Host Terraform
 
-<img src="Terraform.jpeg" alt="Design - Architecture">
+<img src="./images/Terraform.png" alt="Design - Architecture">
 
 Provide Secure instance in private subnets can connect from instance in public subnet 
 from two availability zones
