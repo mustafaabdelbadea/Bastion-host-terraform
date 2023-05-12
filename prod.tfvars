@@ -26,4 +26,4 @@ NUM_CAHCE_NODES            = 1
 CACHE_PARAMETER_GROUP_NAME = "default.redis5.0"
 ENGINE_VERSION_CACHE       = "5.0.6"
 CACHE_PORT                 = 6379
-USER_NAME = "admin"
+USER_NAME                  = "admin"

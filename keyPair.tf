@@ -14,17 +14,17 @@ resource "local_file" "pvKey" {
 }
 
 resource "aws_secretsmanager_secret" "keySecret" {
-  name = "secret_keys_aws"
+  name                    = "secret_keys_aws"
   recovery_window_in_days = 0
 }
 
 resource "aws_secretsmanager_secret_version" "secrets" {
-  secret_id     = "${aws_secretsmanager_secret.keySecret.id}"
-  secret_string = jsonencode({"public_key" = tls_private_key.terra-labs.public_key_openssh, "private_key" = tls_private_key.terra-labs.private_key_pem})
+  secret_id     = aws_secretsmanager_secret.keySecret.id
+  secret_string = jsonencode({ "public_key" = tls_private_key.terra-labs.public_key_openssh, "private_key" = tls_private_key.terra-labs.private_key_pem })
 }
 
 
 locals {
   private_key = nonsensitive(jsondecode(aws_secretsmanager_secret_version.secrets.secret_string))["private_key"]
-  public_key = nonsensitive(jsondecode(aws_secretsmanager_secret_version.secrets.secret_string))["public_key"]
+  public_key  = nonsensitive(jsondecode(aws_secretsmanager_secret_version.secrets.secret_string))["public_key"]
 }

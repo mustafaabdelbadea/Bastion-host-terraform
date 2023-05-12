@@ -44,8 +44,8 @@ resource "aws_instance" "publicInstance2" {
 
 
 resource "aws_instance" "privateInstance1" {
-  ami           = var.AMI_ID
-  instance_type = var.INSTANCE_TYPE
+  ami                         = var.AMI_ID
+  instance_type               = var.INSTANCE_TYPE
   associate_public_ip_address = false
   vpc_security_group_ids      = [aws_security_group.allow_ssh_custom.id]
   subnet_id                   = module.network.prv_subnet1
@@ -62,8 +62,8 @@ resource "aws_instance" "privateInstance1" {
 }
 
 resource "aws_instance" "privateInstance2" {
-  ami           = var.AMI_ID
-  instance_type = var.INSTANCE_TYPE
+  ami                         = var.AMI_ID
+  instance_type               = var.INSTANCE_TYPE
   associate_public_ip_address = false
   vpc_security_group_ids      = [aws_security_group.allow_ssh_custom.id]
   subnet_id                   = module.network.prv_subnet2
@@ -81,9 +81,9 @@ resource "aws_instance" "privateInstance2" {
 
 
 resource "null_resource" "get_instance_ip" {
-    depends_on = [
-      aws_instance.publicInstance1
-    ]
+  depends_on = [
+    aws_instance.publicInstance1
+  ]
   provisioner "local-exec" {
     command = "echo ${aws_instance.publicInstance1.public_ip} >> public_ips.txt"
   }

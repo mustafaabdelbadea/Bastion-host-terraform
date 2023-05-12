@@ -39,7 +39,7 @@ resource "aws_security_group" "allow_ssh_custom" {
     cidr_blocks = [module.network.vpc_cidr]
   }
 
-  
+
   ingress {
     from_port   = 3000
     to_port     = 3000
@@ -62,14 +62,14 @@ resource "aws_security_group" "allow_ssh_custom" {
 
 
 resource "aws_security_group" "rds_sg" {
-  name        = "rds_sg"
-  vpc_id      = module.network.vpc_id
+  name   = "rds_sg"
+  vpc_id = module.network.vpc_id
 
   ingress {
-    from_port        = 3306
-    to_port          = 3306
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -85,14 +85,14 @@ resource "aws_security_group" "rds_sg" {
   }
 }
 resource "aws_security_group" "cluster-sg" {
-  name        = "cluster-sg"
-  vpc_id      = module.network.vpc_id
+  name   = "cluster-sg"
+  vpc_id = module.network.vpc_id
 
   ingress {
-    from_port        = 6379
-    to_port          = 6379
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 6379
+    to_port     = 6379
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {

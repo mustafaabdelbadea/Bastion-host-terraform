@@ -14,7 +14,7 @@ resource "aws_db_instance" "rds" {
 
 
 resource "aws_elasticache_cluster" "db_cache" {
-subnet_group_name    = module.network.db_cache_subnet
+  subnet_group_name    = module.network.db_cache_subnet
   cluster_id           = var.DB_CLUSTER
   engine               = var.DB_CACHE_ENGINE
   node_type            = var.DB_NODE_TYPE
