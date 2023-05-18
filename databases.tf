@@ -23,7 +23,5 @@ resource "aws_elasticache_cluster" "db_cache" {
   engine_version       = var.ENGINE_VERSION_CACHE
   port                 = var.CACHE_PORT
   security_group_ids   = [aws_security_group.cluster-sg.id]
-
-
 }
 
